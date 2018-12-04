@@ -1,0 +1,15 @@
+.env
+db/*dump*
+db/*Dump*
+db/migrate/tmp_*
+log/*
+tmp/**/*
+*.swp
+.DS_Store
+.idea
+.bundle
+public/images/photos
+public/assets
+vendor
+tmp
+nohup.out*
