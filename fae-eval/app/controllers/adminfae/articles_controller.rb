@@ -1,4 +1,4 @@
-module Admin
+module Adminfae
   class ArticlesController < Fae::BaseController
 
     private

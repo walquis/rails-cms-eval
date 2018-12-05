@@ -1,4 +1,4 @@
-module Admin
+module Adminfae
   class ContentBlocksController < Fae::StaticPagesController
 
     private

@@ -1,4 +1,4 @@
-module Admin
+module Adminfae
   class ArticleCategoriesController < Fae::BaseController
 
   end
