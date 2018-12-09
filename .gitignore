@@ -13,3 +13,4 @@ public/assets
 vendor
 tmp
 nohup.out*
+.git
