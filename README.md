@@ -1,34 +1,26 @@
-    $ git clone git@gitlab.com:walquis/cms-eval
-    $ cd cms-eval
-    $ git checkout fae
-    $ bundle install --path=vendor/bundle
-    $ b rails new fae-eval
-    $ cd fae-eval
-    $ b rails g fae:install
-    $ b rails server
-    [Visit localhost:3000/admin, set up first user as above].
-    $ b rails g fae:scaffold ArticleCategory name:string position:integer\n
-    $ b rails g fae:page Home hero_image:image headline:string body:text
-    $ b rails g fae:page AboutUs hero_image:image headline:string body:text
-    $ b rails db:migrate
+```
+$ bundle exec refinerycms rickrockstar
+(Creates a bunch of files, runs "bundle install" a couple of times, which is useless because it puts them in ~/vendor/bundle, creates the sqlite3 db, runs migrations).
+$ cd rickrockstar
+$ rm -rf ~/vendor/bundle
+$ bundle install --path=vendor/bundle
+$ bundle exec rails server
+```
 
-[Edit the navigation_concern, since the generator doesn't do that, to uncomment the nav items for 'home' and 'about us']
+(Error on hitting http://localhost:3000/refinery/login: 
+Could not find table 'refinery_authentication_devise_roles'
 
-Got pages to work, after I overrode the hardcoded 'admin' routes in the FAE gem.
+Some other comments on https://gitter.im/refinery/refinerycms seem to indicate problems with Devise and authentication.
 
-### FAE PROS:
-- Able to integrate somewhere besides '/admin', with some sweat.
-- HTML is easy to enter, via 'html_safe'ing the pulled-in text..
-- Handles images.
+Posted on gitter, no response.  But visited https://github.com/refinery/refinerycms-authentication-devise, and the README had the clues to the answer:
 
-### FAE CONS
-- Can only add new pages by generating new models.
-- Doesn't resize images on upload.
-- Not much chatter on Google, compared to, say, refineryCMS.
+"If you're moving from a pre-3.0 release of Refinery, you lost authentication when it moved out of RefineryCMS core. After installing this gem, generate and run migrations to ... re-enable authentication."
 
-### Links, etc.
-https://www.faecms.com/documentation
-https://www.faecms.com/documentation/quickstart-guide
-https://www.faecms.com/documentation/topics-pages
-https://www.faecms.com/documentation/tutorials-image_and_files
-Example: https://github.com/dbbrandt/fae-app (from June 2017)
+```
+$ bundle exec rails g refinery:authentication:devise  # Generate migrations
+$ bundle exec rake db:migrate                         # Run migrations
+```
+
+The gem was already installed, but the refinerycms scaffolding was not generating nor running the migrations for Devis that it needed.
+
+SUCCESS!
