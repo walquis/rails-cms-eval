@@ -5,9 +5,6 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-# To fix "Could not find table 'refinery_authentication_devise_roles'"
-# See README at https://github.com/refinery/refinerycms-authentication-devise
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 # Use sqlite3 as the database for Active Record
@@ -63,7 +60,6 @@ gem 'refinerycms', '~> 4.0'
 # Optionally, specify additional Refinery CMS Extensions here:
 gem 'refinerycms-acts-as-indexed', ['~> 3.0', '>= 3.0.0']
 gem 'refinerycms-wymeditor', ['~> 2.0', '>= 2.0.0']
-gem 'refinerycms-authentication-devise', '~> 2.0'
 #  gem 'refinerycms-blog', ['~> 4.0', '>= 4.0.0']
 #  gem 'refinerycms-inquiries', ['~> 4.0', '>= 4.0.0']
 #  gem 'refinerycms-search', ['~> 4.0', '>= 4.0.0']
