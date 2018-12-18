@@ -6,6 +6,11 @@ git_source(:github) do |repo_name|
 end
 
 gem 'alchemy_cms'
+gem 'pry'
+
+group :development do
+  gem 'rails-erd'
+end
 
 # Temporarily use Alchemy's user model.
 gem 'alchemy-devise', github: 'AlchemyCMS/alchemy-devise', branch: 'master'

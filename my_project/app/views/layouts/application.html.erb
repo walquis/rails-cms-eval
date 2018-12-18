@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%= @page.language_code %>">
+<html lang="<%= @page.language_code if @page %>">
 <head>
   <%= render "alchemy/pages/meta_data" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
